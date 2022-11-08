@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import ServiceHomepage from './ServiceHomePage/ServiceHomepage'
 import './ServicesHomePage.css'
 
@@ -22,6 +23,7 @@ const ServicesHomePage = () => {
                 services.map(service => <ServiceHomepage key={service._id} serviceData={service}></ServiceHomepage>)
             }
         </div>
+        <button className='btn btn-success my-20'><Link to='/services'>See All</Link></button>
     </div>
     );
 };

@@ -4,11 +4,12 @@ import { AuthContext } from '../../Context/UserContext/UserContext';
 
 const Login = () => {
 
-    const {login} = useContext(AuthContext)
+    const {login, googleLogIn} = useContext(AuthContext)
 
     const navigate = useNavigate()
 
 
+    // Handel User Login with Email and Password
     const handelUserLogIn = (e) => {
         e.preventDefault();
 
@@ -26,6 +27,18 @@ const Login = () => {
             console.log(error)
           });
         console.log(email, password)
+    }
+
+    // Handel log in with Google 
+    const handelLogInWithGoogle = () => {
+        googleLogIn()
+        .then((result) => {
+            const user = result.user;
+            console.log(user)
+            navigate('/')
+          }).catch((error) => {
+              console.log(error)
+          });
     }
 
     return (
@@ -59,7 +72,7 @@ const Login = () => {
                         </form>
                         <div className="googlelogin">
                             <p className='text-lg'>OR</p>
-                            <button className='btn btn-success rounded my-5'><i class="fa-brands fa-google"></i></button>
+                            <button className='btn btn-success rounded my-5' onClick={handelLogInWithGoogle}><i class="fa-brands fa-google"></i></button>
                         </div>
                         <div className="alreadyhave">
                             <p>Are you New here  <Link to='/signup'><b>Sign Up</b></Link></p>
