@@ -8,6 +8,7 @@ import Main from '../../Layout/Main';
 import Login from '../../Login/Login';
 import Home from '../../pages/Home/Home';
 import Services from '../../pages/Services/Services';
+import SignUp from '../../SignUp/SignUp';
 
 const Routes = () => {
 
@@ -23,6 +24,10 @@ const Routes = () => {
             {
                 path:'/services',
                 element: <Services></Services>
+            },
+            {
+                path:'/signup',
+                element: <SignUp></SignUp>
             },
             {
                 path:'/login',

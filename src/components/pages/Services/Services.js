@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Service from './Service/Service';
 
 const Services = () => {
+
+    const [services, setServices] = useState([])
+
+    // Get data from server 
+    useEffect(() => {
+        fetch(`http://localhost:5000/services`)
+            .then(res => res.json())
+            .then(data => setServices(data))
+    }, [])
+
+
+
     return (
-        <div>
-            This is services page
+        <div className='py-20'>
+            <h2 className='text-5xl font-bold py-20'>Services</h2>
+            <div className="services">
+                {
+                    services.map(service => <Service key={service._id} serviceData={service}></Service>)
+                }
+            </div>
         </div>
     );
 };
