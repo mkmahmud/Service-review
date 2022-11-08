@@ -1,13 +1,14 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../Context/UserContext/UserContext';
+import Reviews from './Reviews/Reviews';
 
 const ServiceDetails = () => {
 
 
     // User Data 
     const { user } = useContext(AuthContext)
-    console.log(user)
+   
 
     const userName = user?.displayName;
     const userImg = user?.photoURL;
@@ -16,16 +17,43 @@ const ServiceDetails = () => {
     const data = useLoaderData();
     const { _id, title, img, description, price } = data;
 
+    // Reviews Data State 
+    const [reviewData, setreviewData] = useState([])
+
+    // Load Review Details
+    useEffect(()=>{
+        fetch(`http://localhost:5000/reviewdata?id=${_id}`)
+         .then(res => res.json())
+         .then(data => setreviewData(data))
+    },[_id])
 
 
+console.log(reviewData)
     // Handel Review Submit 
     const handelSubmitReview = (e) => {
         e.preventDefault();
         const message = e.target.reviewMessage.value;
         const rating = e.target.rating.value;
 
+        const userReview = {
+            serviceID:_id,
+            userName, 
+            userImg, 
+            message,
+            rating
+        }
 
-        console.log(_id, userName, userImg, message, rating)
+        fetch(`http://localhost:5000/addreview`, {
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify(userReview)
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
+
+        console.log(userReview)
     }
 
     return (
@@ -45,17 +73,11 @@ const ServiceDetails = () => {
                 </div>
             </div>
             <div className="review my-20">
-                <h2 className='text-4xl font-bold my-10'>10 Reviews</h2>
-                <div className="reviews">
-                    <div className="SingelReviews flex items-center shadow-xl my-10 py-5">
-                        <img src="http://cdn.onlinewebfonts.com/svg/img_312847.png" className='h-12 px-10' alt="" />
-                        <div className="reviewInfo">
-                            <h2 className='font-bold py-2'>Mahmud</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet eos nobis in corrupti adipisci dolorem provident minima eum et id quos, deserunt fugiat voluptate reprehenderit officia, repellat mollitia inventore qui? Fugit dicta veritatis odit accusantium atque libero est distinctio, culpa assumenda eos quaerat reiciendis voluptate harum quod doloremque. Alias, tempora!</p>
-                            <p className='text-orange-600'>Rating: 4.7</p>
-                        </div>
-                    </div>
-                </div>
+                <h2 className='text-4xl font-bold my-10'>{reviewData?.length} Reviews</h2>
+                {
+                    reviewData.map(reviewDataMap => <Reviews key={reviewDataMap._id} data={reviewDataMap}></Reviews>)
+                }
+               
             </div>
             <div className="writeAreview">
                 <h2 className='text-4xl font-bold my-10'>Write a review</h2>
