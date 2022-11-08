@@ -9,7 +9,7 @@ const ServicesHomePage = () => {
 
     // Get data from server 
     useEffect(() => {
-        fetch(`http://localhost:5000/services`)
+        fetch(`http://localhost:5000/serviceshomepage`)
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])

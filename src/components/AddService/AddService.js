@@ -1,7 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const AddService = () => {
 
+    const navigate = useNavigate();
 
     // Handel handelAddService
     const handelAddService = (e) => {
@@ -15,12 +17,27 @@ const AddService = () => {
 
         const newService = {
             title,
-            shortDescription,
-            longDescription,
-            imageURL,
+            description:{
+                pra1:shortDescription,
+                pra2:longDescription
+            },
+            img:imageURL,
             price
         }
 
+        fetch('http://localhost:5000/addservices', {
+            method:"POST",
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify(newService)
+        })
+         .then(res => res.json())
+         .then(data => {
+            navigate('/services')
+        })
+ 
+         form.reset();
         console.log(newService)
     }
 
