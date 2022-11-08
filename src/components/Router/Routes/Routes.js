@@ -7,6 +7,7 @@ import {
 import Main from '../../Layout/Main';
 import Login from '../../Login/Login';
 import Home from '../../pages/Home/Home';
+import Services from '../../pages/Services/Services';
 
 const Routes = () => {
 
@@ -18,6 +19,10 @@ const Routes = () => {
             {
                 path:'/',
                 element:<Home></Home>
+            },
+            {
+                path:'/services',
+                element: <Services></Services>
             },
             {
                 path:'/login',

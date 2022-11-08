@@ -9,7 +9,7 @@ const Navbar = () => {
     const menus = <>
           <li><Link to='/'>Home</Link></li>
           <li><a>About</a></li>
-          <li><a>Services</a></li>
+          <li><Link to='/services'>Services</Link></li>
     </>
 
     return (
@@ -35,7 +35,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/login'>log in</Link>
+               <button className='btn btn-success'> <Link to='/login'>log in</Link></button>
             </div>
         </div>
     );
