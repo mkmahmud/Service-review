@@ -9,6 +9,7 @@ import Main from '../../Layout/Main';
 import Login from '../../Login/Login';
 import Home from '../../pages/Home/Home';
 import Services from '../../pages/Services/Services';
+import ServiceDetails from '../../pages/ServicesDetails/ServiceDetails';
 import SignUp from '../../SignUp/SignUp';
 import PrivateRoute from '../PrivateRoute.js/PrivateRoute';
 
@@ -38,6 +39,14 @@ const Routes = () => {
             {
                 path:'/addservice',
                 element:<PrivateRoute><AddService></AddService></PrivateRoute>
+            },
+            {
+                path:'/services/:id',
+                loader:({params}) => {
+                   const id = params.id;
+                   return fetch(`http://localhost:5000/services/${id}`)
+                },
+                element:<ServiceDetails></ServiceDetails>
             }
           ]
         },
