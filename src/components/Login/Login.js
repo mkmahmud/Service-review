@@ -38,7 +38,7 @@ const Login = () => {
                 console.log(user)
 
                 // get jwt tocken
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://mk-server-mkmahmud.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

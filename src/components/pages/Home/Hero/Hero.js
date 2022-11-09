@@ -9,7 +9,7 @@ const Hero = () => {
             <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-md">
                     <h1 className="mb-5 text-5xl font-bold">
-                        <span>Take Your Fitness</span>
+                        <span>Take Your Skills</span>
                         <span>​To The Next Level</span>
                     </h1>
                     <p className="mb-5">PREMIUM ONLINE & INDIVIDUAL PERSONAL TRAINING IN FAREHAM WITH ROBERT COTTERILL</p>

@@ -16,7 +16,7 @@ const Navbar = () => {
     // Menus
     const menus = <>
         <li><Link to='/'>Home</Link></li>
-        <li><a>About</a></li>
+        <li><a href='#about'>About</a></li>
         <li><Link to='/services'>Services</Link></li>
         <li><Link to='/blog'>Blog</Link></li>
     </>
@@ -65,7 +65,7 @@ const Navbar = () => {
                                         {user?.displayName}
                                     </a>
                                 </li>
-                                <li><a>{user?.email}</a></li>
+                                <li style={{width:'200px'}}><a>{user?.email}</a></li>
                                 <li><a><Link to='/addservice'>Add new Service</Link></a></li>
                                 <li><a><Link to='/myreviews'>My Reviews</Link></a></li>
                                 <li><a onClick={handelLogOut}>Logout</a></li>

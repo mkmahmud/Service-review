@@ -36,7 +36,7 @@ const AddService = () => {
             offset: now.getTimezoneOffset()
         }
 
-        fetch('http://localhost:5000/addservices', {
+        fetch('https://mk-server-mkmahmud.vercel.app/addservices', {
             method:"POST",
             headers:{
                 'Content-Type': 'application/json'
@@ -46,7 +46,7 @@ const AddService = () => {
          .then(res => res.json())
          .then(data => {
             notify()
-            navigate('/services')
+            // navigate('/services')
         })
  
          form.reset();

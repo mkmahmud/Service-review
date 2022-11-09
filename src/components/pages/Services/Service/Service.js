@@ -7,11 +7,11 @@ const Service = ({serviceData}) => {
 
     
     // Data
-    const {_id, title, img, description} = serviceData;
+    const {_id, title, img, description, price} = serviceData;
     
     
     return (
-        <div className="card card-compact w-96 bg-base-100 shadow-xl shadow-2xl">
+        <div className="card card-compact w-96 bg-base-100 shadow-xl shadow-2xl text-left">
             <figure>
             <PhotoProvider>
                     <PhotoView src={img}>
@@ -22,6 +22,7 @@ const Service = ({serviceData}) => {
             <div className="card-body">
                 <h2 className="card-title">{title}</h2>
                 <p>{description.pra1}</p>
+                <p className='text-2xl font-bold'>${price }</p>
                 <div className="card-actions justify-end">
                     <button className="btn btn-primary"><Link to={`/services/${_id}`}>View Details</Link></button>
                 </div>
