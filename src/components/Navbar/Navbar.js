@@ -66,6 +66,7 @@ const Navbar = () => {
                                 </li>
                                 <li><a>{user?.email}</a></li>
                                 <li><a><Link to='/addservice'>Add new Service</Link></a></li>
+                                <li><a><Link to='/myreviews'>My Reviews</Link></a></li>
                                 <li><a onClick={handelLogOut}>Logout</a></li>
                             </ul>
                         </div>

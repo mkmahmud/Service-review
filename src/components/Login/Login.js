@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/UserContext/UserContext';
 
 const Login = () => {
@@ -8,6 +8,9 @@ const Login = () => {
 
     const navigate = useNavigate()
 
+      // Get private route user path
+      const location = useLocation(); 
+      const from = location.state?.from?.pathname || '/';
 
     // Handel User Login with Email and Password
     const handelUserLogIn = (e) => {
@@ -21,7 +24,7 @@ const Login = () => {
         .then((userCredential) => {
             const user = userCredential.user;
             console.log(user)
-            navigate('/')
+            navigate(from)
           })
           .catch((error) => {
             console.log(error)
@@ -35,7 +38,7 @@ const Login = () => {
         .then((result) => {
             const user = result.user;
             console.log(user)
-            navigate('/')
+            navigate(from)
           }).catch((error) => {
               console.log(error)
           });

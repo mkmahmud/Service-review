@@ -12,6 +12,7 @@ const ServiceDetails = () => {
 
     const userName = user?.displayName;
     const userImg = user?.photoURL;
+    const userEmail = user?.email;
 
     // Loader Data
     const data = useLoaderData();
@@ -40,7 +41,10 @@ console.log(reviewData)
             userName, 
             userImg, 
             message,
-            rating
+            rating,
+            userEmail,
+            title,
+            img
         }
 
         fetch(`http://localhost:5000/addreview`, {

@@ -8,6 +8,7 @@ import AddService from '../../AddService/AddService';
 import Main from '../../Layout/Main';
 import Login from '../../Login/Login';
 import Home from '../../pages/Home/Home';
+import Myreviews from '../../pages/Myreviews/Myreviews';
 import Services from '../../pages/Services/Services';
 import ServiceDetails from '../../pages/ServicesDetails/ServiceDetails';
 import SignUp from '../../SignUp/SignUp';
@@ -47,6 +48,10 @@ const Routes = () => {
                    return fetch(`http://localhost:5000/services/${id}`)
                 },
                 element:<ServiceDetails></ServiceDetails>
+            },
+            {
+                path:'/myreviews',
+                element:<PrivateRoute> <Myreviews></Myreviews></PrivateRoute>
             }
           ]
         },
