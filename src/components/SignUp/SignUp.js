@@ -67,7 +67,8 @@ const SignUp = () => {
                 const user = result.user;
                 console.log(user)
                 navigate('/')
-            }).catch((error) => {
+            })
+            .catch((error) => {
                 console.log(error)
                 dataLOading(false)
                 signupErr()
