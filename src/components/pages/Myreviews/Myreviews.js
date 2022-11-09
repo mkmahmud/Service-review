@@ -15,7 +15,11 @@ const Myreviews = () => {
 
     // Load My Reviews 
     useEffect(() => {
-        fetch(`https://mk-server-mkmahmud.vercel.app/myreview?email=${userEmail}`)
+        fetch(`http://localhost:5000/myreview?email=${userEmail}`, {
+            headers:{
+                authoraizetion: `Bearer ${localStorage.getItem('mk-tocken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => setMyReviews(data))
     }, [userEmail])

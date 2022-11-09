@@ -49,7 +49,7 @@ const Login = () => {
                     .then(data => {
                         localStorage.setItem('mk-tocken', data.tocken)
                     })
-                // navigate(from)
+                navigate(from)
             })
             .catch((error) => {
                 console.log(error)
