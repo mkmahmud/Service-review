@@ -9,7 +9,7 @@ const ServicesHomePage = () => {
 
     // Get data from server 
     useEffect(() => {
-        fetch(`http://localhost:5000/serviceshomepage`)
+        fetch(`https://mk-server-mkmahmud.vercel.app/serviceshomepage`)
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])

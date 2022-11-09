@@ -10,6 +10,7 @@ import Login from '../../Login/Login';
 import Blog from '../../pages/Blog/Blog';
 import Home from '../../pages/Home/Home';
 import Myreviews from '../../pages/Myreviews/Myreviews';
+import NotFound from '../../pages/NotFound/NotFound';
 import Services from '../../pages/Services/Services';
 import ServiceDetails from '../../pages/ServicesDetails/ServiceDetails';
 import SignUp from '../../SignUp/SignUp';
@@ -46,7 +47,7 @@ const Routes = () => {
                 path:'/services/:id',
                 loader:({params}) => {
                    const id = params.id;
-                   return fetch(`http://localhost:5000/services/${id}`)
+                   return fetch(`https://mk-server-mkmahmud.vercel.app/services/${id}`)
                 },
                 element:<ServiceDetails></ServiceDetails>
             },
@@ -60,6 +61,10 @@ const Routes = () => {
             }
           ]
         },
+        {
+            path:'*',
+            element:<NotFound></NotFound>
+        }
       ]);
 
     return (

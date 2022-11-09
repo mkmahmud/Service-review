@@ -25,6 +25,7 @@ const UserContext = ({ children }) => {
 
     // Create User with Google 
     const createUserGoogle = () => {
+        setLoading(true)
         return signInWithPopup(auth, GoogleProvider);
     }
 
@@ -44,6 +45,7 @@ const UserContext = ({ children }) => {
 
     // user log in Google 
     const googleLogIn = () => {
+        setLoading(true)
         return signInWithPopup(auth, GoogleProvider);
     }
     

@@ -23,7 +23,7 @@ const ServiceDetails = () => {
 
     // Load Review Details
     useEffect(() => {
-        fetch(`http://localhost:5000/reviewdata?id=${_id}`)
+        fetch(`https://mk-server-mkmahmud.vercel.app/reviewdata?id=${_id}`)
             .then(res => res.json())
             .then(data => setreviewData(data))
     }, [_id])
@@ -47,7 +47,7 @@ const ServiceDetails = () => {
             img
         }
 
-        fetch(`http://localhost:5000/addreview`, {
+        fetch(`https://mk-server-mkmahmud.vercel.app/addreview`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -57,7 +57,7 @@ const ServiceDetails = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                fetch(`http://localhost:5000/reviewdata?id=${_id}`)
+                fetch(`https://mk-server-mkmahmud.vercel.app/reviewdata?id=${_id}`)
                     .then(res => res.json())
                     .then(data => setreviewData(data))
             })

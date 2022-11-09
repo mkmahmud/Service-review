@@ -13,7 +13,7 @@ const Myreviews = () => {
 
     // Load My Reviews 
     useEffect(() => {
-        fetch(`http://localhost:5000/myreview?email=${userEmail}`)
+        fetch(`https://mk-server-mkmahmud.vercel.app/myreview?email=${userEmail}`)
             .then(res => res.json())
             .then(data => setMyReviews(data))
     }, [userEmail])
@@ -24,7 +24,7 @@ const Myreviews = () => {
     const deleteHandeler = id => {
         console.log(id)
 
-        fetch(`http://localhost:5000/myreview/${id}`, {
+        fetch(`https://mk-server-mkmahmud.vercel.app/myreview/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())

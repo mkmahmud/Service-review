@@ -14,7 +14,7 @@ const SingelReview = ({ data, deleteHandeler }) => {
     const handelUpdate = (e) => {
         e.preventDefault()
         const updateMessage = e.target.updateMessage.value;
-        fetch(`http://localhost:5000/myreview/${_id}`, {
+        fetch(`https://mk-server-mkmahmud.vercel.app/myreview/${_id}`, {
             method:'PATCH',
             headers:{
                 'Content-Type':'Application/json'

@@ -25,7 +25,7 @@ const AddService = () => {
             price
         }
 
-        fetch('http://localhost:5000/addservices', {
+        fetch('https://mk-server-mkmahmud.vercel.app/addservices', {
             method:"POST",
             headers:{
                 'Content-Type': 'application/json'
