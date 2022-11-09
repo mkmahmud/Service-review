@@ -14,7 +14,16 @@ const SingelReview = ({ data, deleteHandeler }) => {
     const handelUpdate = (e) => {
         e.preventDefault()
         const updateMessage = e.target.updateMessage.value;
-        console.log(updateMessage)
+        fetch(`http://localhost:5000/myreview/${_id}`, {
+            method:'PATCH',
+            headers:{
+                'Content-Type':'Application/json'
+            },
+            body:JSON.stringify({updateReview:updateMessage })
+
+        })
+        .then(res => res.json())
+        .then((data => console.log(data)))
     }
 
     return (
@@ -31,7 +40,7 @@ const SingelReview = ({ data, deleteHandeler }) => {
                                     <span className="label-text">Update your review</span>
                                 </label>
                                 <textarea className="textarea textarea-bordered h-24 w-96" name='updateMessage' defaultValue={message}></textarea>
-                                <button className='btn btn-success' type='submit'>Update</button>
+                                <button className='btn btn-success text-black font-bold' type='submit'>Update</button>
                             </div>
                         </form>
                         :

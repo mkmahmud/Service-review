@@ -7,6 +7,7 @@ import {
 import AddService from '../../AddService/AddService';
 import Main from '../../Layout/Main';
 import Login from '../../Login/Login';
+import Blog from '../../pages/Blog/Blog';
 import Home from '../../pages/Home/Home';
 import Myreviews from '../../pages/Myreviews/Myreviews';
 import Services from '../../pages/Services/Services';
@@ -52,6 +53,10 @@ const Routes = () => {
             {
                 path:'/myreviews',
                 element:<PrivateRoute> <Myreviews></Myreviews></PrivateRoute>
+            },
+            {
+                path:'/blog',
+                element:<Blog></Blog>
             }
           ]
         },

@@ -18,6 +18,7 @@ const Navbar = () => {
         <li><Link to='/'>Home</Link></li>
         <li><a>About</a></li>
         <li><Link to='/services'>Services</Link></li>
+        <li><Link to='/blog'>Blog</Link></li>
     </>
 
     // handelLogOut
