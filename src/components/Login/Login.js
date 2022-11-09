@@ -32,9 +32,24 @@ const Login = () => {
         form.reset();
         login(email, password)
             .then((userCredential) => {
-                const user = userCredential.user;
+                const user = {
+                    email: userCredential.user.email
+                };
                 console.log(user)
-                navigate(from)
+
+                // get jwt tocken
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem('mk-tocken', data.tocken)
+                    })
+                // navigate(from)
             })
             .catch((error) => {
                 console.log(error)
