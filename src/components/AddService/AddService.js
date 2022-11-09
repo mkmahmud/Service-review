@@ -1,11 +1,15 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useTitle from '../Hoocks/useTitle';
+import toast, { Toaster } from 'react-hot-toast';
 
 const AddService = () => {
 
     useTitle('Add Services')
     const navigate = useNavigate();
+
+    // Toast 
+    const notify = () => toast.success('Service Added Successfully ');
 
     // Handel handelAddService
     const handelAddService = (e) => {
@@ -36,6 +40,7 @@ const AddService = () => {
         })
          .then(res => res.json())
          .then(data => {
+            notify()
             navigate('/services')
         })
  
@@ -89,6 +94,8 @@ const AddService = () => {
                                     <button className="btn btn-primary">Add Services</button>
                                 </div>
                             </form>
+                            
+                        <Toaster />
                         </div>
                     </div>
                 </div>

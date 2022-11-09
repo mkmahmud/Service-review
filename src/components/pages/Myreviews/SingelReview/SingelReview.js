@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useTitle from '../../../Hoocks/useTitle';
+import toast, { Toaster } from 'react-hot-toast';
 
 const SingelReview = ({ data, deleteHandeler }) => {
+    // Title
     useTitle('Reviews')
+    
+    // Toast 
+    const notify = () => toast.success('Review Updeted  ');
+    
+    // 
     const { _id, message, serviceID, title, img } = data;
 
     const [update, setUpdate] = useState(false);
@@ -25,7 +32,10 @@ const SingelReview = ({ data, deleteHandeler }) => {
 
         })
         .then(res => res.json())
-        .then((data => console.log(data)))
+        .then((data => {
+            console.log(data)
+            notify()
+        }))
     }
 
     return (
@@ -55,6 +65,7 @@ const SingelReview = ({ data, deleteHandeler }) => {
                 <button className='btn btn-danger mx-4' onClick={() => deleteHandeler(_id)} >Delete</button>
             </div>
 
+            <Toaster />
 
 
         </div>

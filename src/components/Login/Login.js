@@ -2,12 +2,14 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/UserContext/UserContext';
 import useTitle from '../Hoocks/useTitle';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
 
     // Title
     useTitle('log in')
-
+    // Toast 
+    const notify = () => toast.error('Email or password incorrect ');
 
     const [dataLOading, setDataloading] = useState(false)
 
@@ -37,6 +39,7 @@ const Login = () => {
             .catch((error) => {
                 console.log(error)
                 setDataloading(false)
+                notify()
             });
         console.log(email, password)
     }
@@ -50,6 +53,7 @@ const Login = () => {
                 navigate(from)
             }).catch((error) => {
                 console.log(error)
+                notify()
             });
     }
 
@@ -92,6 +96,7 @@ const Login = () => {
                         <div className="alreadyhave">
                             <p>Are you New here  <Link to='/signup'><b>Sign Up</b></Link></p>
                         </div>
+                        <Toaster />
                     </div>
                 </div>
             </div>

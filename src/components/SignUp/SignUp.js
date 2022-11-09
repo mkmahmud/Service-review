@@ -2,11 +2,20 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/UserContext/UserContext';
 import useTitle from '../Hoocks/useTitle';
+import toast, { Toaster } from 'react-hot-toast';
 
 const SignUp = () => {
+
+    // Title
     useTitle('Sign Up')
+
+    // User context
     const { createUser, updateUser, createUserGoogle } = useContext(AuthContext)
 
+    // TOast
+    const signupErr = () => toast.error('Email Already Exist ');
+
+    // Navigate
     const navigate = useNavigate()
 
     const [dataLOading, setDataloading] = useState(false)
@@ -37,13 +46,14 @@ const SignUp = () => {
                     }).catch((error) => {
                         setDataloading(false)
                         console.log(error)
+                        signupErr()
                     });
 
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-
+                console.log(error)
+                setDataloading(false)
+                signupErr()
             });
 
         console.log(name, email, password)
@@ -59,6 +69,9 @@ const SignUp = () => {
                 navigate('/')
             }).catch((error) => {
                 console.log(error)
+                dataLOading(false)
+                signupErr()
+                
             });
     }
 
@@ -112,6 +125,8 @@ const SignUp = () => {
                         </div>
                     </div>
                 </div>
+                <Toaster />
+
                 <div className="text-center lg:text-left">
                     {
                         dataLOading ? <progress className="progress w-56 my-5"></progress> : ''
