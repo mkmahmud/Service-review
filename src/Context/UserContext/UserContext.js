@@ -60,7 +60,7 @@ const UserContext = ({ children }) => {
         });
 
         return () => unsubscribe();
-    }, [])
+    }, [user])
 
 
     // sign out 
