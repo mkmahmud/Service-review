@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/UserContext/UserContext';
 import useTitle from '../Hoocks/useTitle';
@@ -9,8 +9,11 @@ const SignUp = () => {
 
     const navigate = useNavigate()
 
+    const [dataLOading, setDataloading] = useState(false)
+
     // Handel user sign up with email password
     const handelUserSignUp = (e) => {
+        setDataloading(true)
         e.preventDefault();
 
         const form = e.target;
@@ -32,6 +35,7 @@ const SignUp = () => {
                         console.log('updated')
                         navigate('/')
                     }).catch((error) => {
+                        setDataloading(false)
                         console.log(error)
                     });
 
@@ -93,6 +97,7 @@ const SignUp = () => {
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
                             </div>
+
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Sign Up</button>
                             </div>
@@ -108,6 +113,9 @@ const SignUp = () => {
                     </div>
                 </div>
                 <div className="text-center lg:text-left">
+                    {
+                        dataLOading ? <progress className="progress w-56 my-5"></progress> : ''
+                    }
                     <h1 className="text-5xl font-bold">Sign Up</h1>
                     <p className="py-6">MK is the digital learning platform. You can learn anythig by MK</p>
                 </div>
