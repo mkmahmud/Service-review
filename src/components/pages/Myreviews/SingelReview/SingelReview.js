@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useTitle from '../../../Hoocks/useTitle';
 
 const SingelReview = ({ data, deleteHandeler }) => {
+    useTitle('Reviews')
     const { _id, message, serviceID, title, img } = data;
 
     const [update, setUpdate] = useState(false);

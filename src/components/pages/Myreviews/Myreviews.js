@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Context/UserContext/UserContext';
+import useTitle from '../../Hoocks/useTitle';
 import './Myreviews.css'
 import SingelReview from './SingelReview/SingelReview';
 
 const Myreviews = () => {
+    useTitle('My Reviews')
 
     const { user } = useContext(AuthContext);
     const [myReviews, setMyReviews] = useState([]);

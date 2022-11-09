@@ -1,8 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import useTitle from '../Hoocks/useTitle';
 
 const AddService = () => {
 
+    useTitle('Add Services')
     const navigate = useNavigate();
 
     // Handel handelAddService

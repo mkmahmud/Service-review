@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import useTitle from '../../Hoocks/useTitle';
 import Service from './Service/Service';
 
 const Services = () => {
+    useTitle('Services')
 
     const [services, setServices] = useState([])
 

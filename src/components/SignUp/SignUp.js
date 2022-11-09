@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/UserContext/UserContext';
+import useTitle from '../Hoocks/useTitle';
 
 const SignUp = () => {
-
+    useTitle('Sign Up')
     const { createUser, updateUser, createUserGoogle } = useContext(AuthContext)
 
     const navigate = useNavigate()
