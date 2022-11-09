@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useTitle from '../../Hoocks/useTitle';
 import Service from './Service/Service';
+import './Services.css'
 
 const Services = () => {
     useTitle('Services')
@@ -11,7 +12,7 @@ const Services = () => {
 
     // Get data from server 
     useEffect(() => {
-        fetch(`https://mk-server-mkmahmud.vercel.app/services`)
+        fetch(`http://localhost:5000/services`)
             .then(res => res.json())
             .then(data => {
                 setServices(data)

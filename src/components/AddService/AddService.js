@@ -21,6 +21,9 @@ const AddService = () => {
         const imageURL = form.imageURL.value;
         const price = form.price.value;
 
+        var now = new Date();
+
+
         const newService = {
             title,
             description:{
@@ -28,10 +31,12 @@ const AddService = () => {
                 pra2:longDescription
             },
             img:imageURL,
-            price
+            price,
+            date: now,
+            offset: now.getTimezoneOffset()
         }
 
-        fetch('https://mk-server-mkmahmud.vercel.app/addservices', {
+        fetch('http://localhost:5000/addservices', {
             method:"POST",
             headers:{
                 'Content-Type': 'application/json'

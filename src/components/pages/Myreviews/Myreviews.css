@@ -1,0 +1,14 @@
+@media only screen and (max-width: 768px) {
+    .singelReview{
+        display: block;
+    }
+    .singelReview img{
+       margin: auto;
+    }
+    .singelReviewTitle{
+        text-align: center;
+    }
+    .singelReviewButtons{
+        margin: auto;
+    }
+}

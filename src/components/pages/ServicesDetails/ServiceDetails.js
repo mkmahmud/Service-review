@@ -3,6 +3,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../Context/UserContext/UserContext';
 import useTitle from '../../Hoocks/useTitle';
 import Reviews from './Reviews/Reviews';
+import './ServiceDetails.css'
 
 const ServiceDetails = () => {
     useTitle('Service Details')
@@ -67,7 +68,7 @@ const ServiceDetails = () => {
     }
 
     return (
-        <div className='py-10 text-left'>
+        <div className='py-10 text-left service-details'>
             <div className="heading">
                 <h2 className='text-left font-bold text-5xl'>  Details  Page  </h2>
             </div>

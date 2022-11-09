@@ -35,6 +35,7 @@ const SingelReview = ({ data, deleteHandeler }) => {
         .then((data => {
             console.log(data)
             notify()
+            setUpdate(!update)
         }))
     }
 
@@ -42,7 +43,7 @@ const SingelReview = ({ data, deleteHandeler }) => {
         <div className="singelReview flex justify-between p-5 w-full bg-green-300 my-10">
             <img src={img} className='h-32' alt="" />
             <div className="details p-3">
-                <div className="serviceTitle"><Link to={`/services/${serviceID}`} className='text-2xl font-bold'>{title}</Link></div>
+                <div className="serviceTitle"><Link to={`/services/${serviceID}`} className='singelReviewTitle text-2xl font-bold'>{title}</Link></div>
                 <div className="reviews py-5">{message}</div>
                 {
                     update ?
@@ -60,7 +61,7 @@ const SingelReview = ({ data, deleteHandeler }) => {
                 }
 
             </div>
-            <div className="actions flex items-center">
+            <div className="actions flex items-center singelReviewButtons">
                 <label className="btn btn-warning" onClick={() => updateHandeler(_id)}>Update</label>
                 <button className='btn btn-danger mx-4' onClick={() => deleteHandeler(_id)} >Delete</button>
             </div>
