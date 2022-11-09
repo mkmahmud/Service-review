@@ -8,7 +8,7 @@ const ServiceDetails = () => {
 
     // User Data 
     const { user } = useContext(AuthContext)
-   
+
 
     const userName = user?.displayName;
     const userImg = user?.photoURL;
@@ -22,14 +22,14 @@ const ServiceDetails = () => {
     const [reviewData, setreviewData] = useState([])
 
     // Load Review Details
-    useEffect(()=>{
+    useEffect(() => {
         fetch(`http://localhost:5000/reviewdata?id=${_id}`)
-         .then(res => res.json())
-         .then(data => setreviewData(data))
-    },[_id])
+            .then(res => res.json())
+            .then(data => setreviewData(data))
+    }, [_id])
 
 
-console.log(reviewData)
+    console.log(reviewData)
     // Handel Review Submit 
     const handelSubmitReview = (e) => {
         e.preventDefault();
@@ -37,9 +37,9 @@ console.log(reviewData)
         const rating = e.target.rating.value;
 
         const userReview = {
-            serviceID:_id,
-            userName, 
-            userImg, 
+            serviceID: _id,
+            userName,
+            userImg,
             message,
             rating,
             userEmail,
@@ -48,14 +48,19 @@ console.log(reviewData)
         }
 
         fetch(`http://localhost:5000/addreview`, {
-            method:'POST',
-            headers:{
-                'Content-Type':'application/json'
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
             },
-            body:JSON.stringify(userReview)
+            body: JSON.stringify(userReview)
         })
-        .then(res => res.json())
-        .then(data => console.log(data))
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                fetch(`http://localhost:5000/reviewdata?id=${_id}`)
+                    .then(res => res.json())
+                    .then(data => setreviewData(data))
+            })
 
         console.log(userReview)
     }
@@ -81,7 +86,7 @@ console.log(reviewData)
                 {
                     reviewData.map(reviewDataMap => <Reviews key={reviewDataMap._id} data={reviewDataMap}></Reviews>)
                 }
-               
+
             </div>
             <div className="writeAreview">
                 <h2 className='text-4xl font-bold my-10'>Write a review</h2>

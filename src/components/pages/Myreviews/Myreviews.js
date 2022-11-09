@@ -6,19 +6,42 @@ import SingelReview from './SingelReview/SingelReview';
 
 const Myreviews = () => {
 
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [myReviews, setMyReviews] = useState([]);
 
     const userEmail = user?.email;
 
-        // Load My Reviews 
-        useEffect(()=>{
-            fetch(`http://localhost:5000/myreview?email=${userEmail}`)
-             .then(res => res.json())
-             .then(data => setMyReviews(data))
-        },[userEmail])
-    
-    
+    // Load My Reviews 
+    useEffect(() => {
+        fetch(`http://localhost:5000/myreview?email=${userEmail}`)
+            .then(res => res.json())
+            .then(data => setMyReviews(data))
+    }, [userEmail])
+
+
+
+    // Delete handeler
+    const deleteHandeler = id => {
+        console.log(id)
+
+        fetch(`http://localhost:5000/myreview/${id}`, {
+            method: "DELETE"
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.deletedCount > 0) {
+                    console.log('Data delete success fully')
+                    const remainingReviews = myReviews.filter(review => review._id !== id);
+                    setMyReviews(remainingReviews)
+                }
+            })
+
+    }
+
+
+
+
 
     return (
         <div>
@@ -27,9 +50,9 @@ const Myreviews = () => {
                 <h2 class="sub-heading">Your All reviews</h2>
                 <section className='my-10' >
                     {
-                        myReviews.map(myreview => <SingelReview key={myreview._id} data={myreview}></SingelReview>)
+                        myReviews.map(myreview => <SingelReview key={myreview._id} data={myreview} deleteHandeler={deleteHandeler}></SingelReview>)
                     }
-                    
+
                 </section>
             </div>
         </div>
